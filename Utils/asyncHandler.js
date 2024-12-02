@@ -3,7 +3,7 @@ const asyncHandler = (callBack) => {
     try {
       await callBack(req, res, next);
     } catch (error) {
-      return res.status(500).json({ message: error.message, success: false });
+      return res.status(500).json({ message: error.message, success: true });
     }
   };
 };
