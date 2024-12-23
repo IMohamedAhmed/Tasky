@@ -13,9 +13,10 @@ module.exports = {
   }),
 
   createTask: asyncHandler(async (req, res, next) => {
-    const { task } = req.body;
+    const { task, projectId } = req.body;
+    const userId = req.user._id
 
-    await TaskService.createTask(task);
+    await TaskService.createTask(task, projectId, userId);
 
     return res.status(201).json({
       message: "Task Created Successfully",

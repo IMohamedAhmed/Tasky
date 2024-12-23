@@ -24,7 +24,7 @@ module.exports = {
 
       if (token) {
         const { userId } = jwt.verify(token, process.env.SECRET_KEY, { algorithm: "HS256" });
-        const user = await User.findById(userId, { username: 1, email: 1, status: 1 });
+        const user = await User.findById(userId, { username: 1, email: 1, status: 1 }).lean();
 
         if (!user) {
           res.status(404).json({ message: "User Not Found", success: false });
