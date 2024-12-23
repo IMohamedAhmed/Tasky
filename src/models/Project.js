@@ -18,12 +18,12 @@ const ProjectSchema = new Schema(
     },
     _tasks: [
       {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "Task",
       },
     ],
     _user: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "User",
     },
   },
