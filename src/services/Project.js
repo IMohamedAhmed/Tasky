@@ -5,6 +5,10 @@ class ProjectService {
         return Project.find().lean()
     }
 
+    async getProject(projectId) {
+        return Project.findOne({ _id: projectId }).lean()
+    }
+
     async createProject(newProject, userId) {
         return new Project({
             name: newProject.name,

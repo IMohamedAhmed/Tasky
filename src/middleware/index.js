@@ -41,7 +41,7 @@ module.exports = {
 
     app.use(express.urlencoded({ extended: true }));
     app.use(express.json());
-    app.use("/api", appRoutes);
+    app.use("/app", appRoutes);
 
     app.use((err, req, res, next) => {
       if (err.name === 'UnauthorizedError') {

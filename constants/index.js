@@ -1,8 +1,10 @@
 module.exports = {
     ALLOWED_ROUTES: {
         path: [
-            '/api/user/sign-in',
-            '/api/user/sign-up',
+            '/app/user/sign-in',
+            '/app/user/sign-up',
+            { url: "/app-docs", methods: ["GET"] },
+            { url: /^\/app-docs\/.*/, methods: ["GET"] }
         ]
     }
 }

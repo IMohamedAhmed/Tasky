@@ -16,7 +16,10 @@
     "express": "^4.21.1",
     "express-jwt": "^8.5.1",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.8.3"
+    "mongoose": "^8.8.3",
+    "redis": "^5.8.2",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "crypto": "^1.0.1",

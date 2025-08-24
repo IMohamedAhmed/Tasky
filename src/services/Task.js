@@ -6,6 +6,10 @@ class TaskService {
     return Task.find().lean();
   }
 
+  async getTask(taskId) {
+    return Task.findOne({ _id: taskId }).lean();
+  }
+
   async createTask(task, projectId, userId) {
     const newTask = {
       _project: projectId,

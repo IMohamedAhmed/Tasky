@@ -1,5 +1,5 @@
 const asyncHandler = require("../../Utils/asyncHandler");
-const UserService = require("../services/User");
+const UserService = require("../services/Auth");
 
 module.exports = {
   login: asyncHandler(async (req, res, next) => {
