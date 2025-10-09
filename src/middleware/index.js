@@ -4,12 +4,16 @@ const asyncHandler = require('../../Utils/asyncHandler')
 const appRoutes = require("../../src/routes/index");
 const express = require("express");
 const { expressjwt } = require('express-jwt');
+const cors = require("cors");
 const constants = require('../../constants/index')
 const bodyParser = require('body-parser');
+const morgan = require('morgan')
 
 module.exports = {
   connect(app) {
     app.use(bodyParser.json());
+    app.use(cors());
+    app.use(morgan('dev'));
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(
       expressjwt({

@@ -2,12 +2,9 @@ const { Schema, model } = require("mongoose");
 
 const TaskSchema = new Schema(
   {
-    title: {
-      type: String,
-      required: true,
-    },
     description: {
       type: String,
+      required: true
     },
     status: {
       type: String,
@@ -36,6 +33,9 @@ const TaskSchema = new Schema(
       ref: "Project",
       required: true
     },
+    videoLink: {
+      type: String,
+    }
   },
   {
     versionKey: false,

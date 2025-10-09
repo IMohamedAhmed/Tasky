@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const TasksController = require("../controllers/Task");
-const UsersController = require("../controllers/Auth");
+const AuthController = require("../controllers/Auth");
 const ProjectsController = require("../controllers/Project");
 
 /**
@@ -216,14 +216,24 @@ const ProjectsController = require("../controllers/Project");
 router.get("/tasks", TasksController.getTasks);
 router.get("/task/:id", TasksController.getTask);
 router.post("/task", TasksController.createTask);
+router.delete("/task/:id", TasksController.deleteTask);
+router.patch("/task/:id/status", TasksController.updateTaskStatus);
 
 // Users
-router.post("/user/sign-in", UsersController.login);
-router.post("/user/sign-up", UsersController.register);
+router.get("/user", AuthController.getUserById);
+router.post("/user/sign-in", AuthController.login);
+router.post("/user/reset", AuthController.sendresetPasswordOtp);
+router.post("/user/reset/password", AuthController.resetPassword);
+router.post("/user/sign-up", AuthController.register);
+router.post("/user/sign-up/complete", AuthController.completeRegistration);
+router.post("/user/verify-otp", AuthController.verifyOtp);
+router.post("/user/oauth/sign-in", AuthController.loginOAuth);
+
 
 // Projects
 router.get("/projects", ProjectsController.getProjects);
 router.get("/project/:id", ProjectsController.getProject);
 router.post("/project", ProjectsController.createProject);
+router.delete("/project/:id", ProjectsController.deleteProject);
 
 module.exports = router;
