@@ -8,13 +8,17 @@ class TaskService {
   }
 
   async getTask(taskId, projectId, userId) {
-    return Task.findOne({ _id: taskId, _project: projectId, _user: userId }).lean();
+    return Task.findOne({
+      _id: taskId,
+      _project: projectId,
+      _user: userId,
+    }).lean();
   }
 
   async createTask(task, projectId, userId) {
     const newTask = {
       _project: projectId,
-      _user: userId
+      _user: userId,
     };
 
     if (task.description) {
@@ -39,11 +43,18 @@ class TaskService {
 
     const taskDoc = await new Task(newTask).save();
 
-    return Project.updateOne({ _id: projectId }, { $push: { _tasks: taskDoc._id } })
+    return Project.updateOne(
+      { _id: projectId },
+      { $push: { _tasks: taskDoc._id } }
+    );
   }
 
   async deleteTask(taskId, projectId, userId) {
-    const task = await Task.findOneAndDelete({ _id: taskId, _project: projectId, _user: userId });
+    const task = await Task.findOneAndDelete({
+      _id: taskId,
+      _project: projectId,
+      _user: userId,
+    });
 
     if (!task) {
       throw new Error("Task not found or unauthorized");
@@ -58,7 +69,9 @@ class TaskService {
     const validStatuses = ["pending", "in-progress", "completed", "archived"];
 
     if (!validStatuses.includes(status)) {
-      throw new Error("Invalid status. Must be one of: pending, in-progress, completed, archived");
+      throw new Error(
+        "Invalid status. Must be one of: pending, in-progress, completed, archived"
+      );
     }
 
     const task = await Task.findOneAndUpdate(

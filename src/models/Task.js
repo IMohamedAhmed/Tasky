@@ -4,7 +4,7 @@ const TaskSchema = new Schema(
   {
     description: {
       type: String,
-      required: true
+      required: true,
     },
     status: {
       type: String,
@@ -26,16 +26,16 @@ const TaskSchema = new Schema(
     _user: {
       type: Schema.Types.ObjectId,
       ref: "User",
-      required: true
+      required: true,
     },
     _project: {
       type: Schema.Types.ObjectId,
       ref: "Project",
-      required: true
+      required: true,
     },
     videoLink: {
       type: String,
-    }
+    },
   },
   {
     versionKey: false,
